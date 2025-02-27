@@ -157,34 +157,34 @@ class ProjectsScreen extends StatelessWidget {
           // 1. Okey 101 Plus
           ProjectItem(
             title: 'Okey 101 Plus',
-            image: 'images/101plus.png',
+            image: 'assets/images/101plus.png',
             link: 'https://www.zynga.com/games/101-okey-plus/',
           ),
           SizedBox(height: 16),
           // 2. Backgammon Plus
           ProjectItem(
             title: 'Backgammon Plus',
-            image: 'images/backgammon.png',
+            image: 'assets/images/backgammon.png',
             link: 'https://www.zynga.com/games/backgammon-plus/',
           ),
           SizedBox(height: 16),
           // 3. Playing Fortune (with two images, no link)
           ProjectItemMultiple(
             title: 'Playing Fortune',
-            images: ['images/iskambilfali.png', 'images/iskambilfali2.png'],
+            images: ['assets/images/iskambilfali.png', 'assets/images/iskambilfali2.png'],
           ),
           SizedBox(height: 16),
           // 4. Extreme Stunts 3D
           ProjectItem(
             title: 'Extreme Stunts 3D',
-            image: 'images/extremestunts.png',
+            image: 'assets/images/extremestunts.png',
             link: 'https://play.google.com/store/apps/details?id=com.bariskaplan.extremehillclimbing3d&hl=tr',
           ),
           SizedBox(height: 16),
           // 5. Hyper Casual Runner (with two images and a link)
           ProjectItemMultiple(
             title: 'Hyper Casual Runner',
-            images: ['images/hypercasual.png', 'images/hypercasual2.png'],
+            images: ['assets/images/hypercasual.png', 'assets/images/hypercasual2.png'],
             link: 'https://github.com/bilgehandk/Runner-Hyper-Casual-Game',
           ),
         ],
