@@ -38,6 +38,7 @@ dependencies:
   url_launcher: ^6.0.20
   path_provider: ^2.1.5
   syncfusion_flutter_pdfviewer: ^28.2.7
+  animated_background: ^2.0.0  # ensure this line is present
 
 dev_dependencies:
   flutter_test:
