@@ -65,6 +65,13 @@ flutter:
     - assets/images/bilgehan.png
     - assets/images/github.png
     - assets/images/linkedin.png
+    - assets/images/101plus.png
+    - assets/images/backgammon.png
+    - assets/images/extremestunts.png
+    - assets/images/hypercasual.png
+    - assets/images/hypercasual2.png
+    - assets/images/iskambilfali.png
+    - assets/images/iskambilfali2.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
