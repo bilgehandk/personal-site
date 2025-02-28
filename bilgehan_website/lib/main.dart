@@ -131,8 +131,8 @@ class InfoScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Image.asset('assets/images/bilgehan.png'),
+                    padding: const EdgeInsets.only(top: 25.0, bottom: 25.0),
+                    child: Image.asset('assets/images/bilgehan.png', width: 800, height: 800), // Adjusted size
                   ),
                 ),
               ],
@@ -159,6 +159,7 @@ class ProjectsScreen extends StatelessWidget {
             title: 'Okey 101 Plus',
             image: 'assets/images/101plus.png',
             link: 'https://www.zynga.com/games/101-okey-plus/',
+            description: 'During my 5.5-month internship period, I touched a lot of ground at the production level in 101 Okey Plus and Backgammon Plus, like a junior. The most important of these is the integration of the new Localization system into the prefabs in the game, I did a lot of bug fixing in both games. I did a lot of client-based work such as Intersitial AD or Store Sale pop-up development, and new feature development.',
           ),
           SizedBox(height: 16),
           // 2. Backgammon Plus
@@ -166,12 +167,14 @@ class ProjectsScreen extends StatelessWidget {
             title: 'Backgammon Plus',
             image: 'assets/images/backgammon.png',
             link: 'https://www.zynga.com/games/backgammon-plus/',
+            description: 'During my 5.5-month internship period, I touched a lot of ground at the production level in 101 Okey Plus and Backgammon Plus, like a junior. The most important of these is the integration of the new Localization system into the prefabs in the game, I did a lot of bug fixing in both games. I did a lot of client-based work such as Intersitial AD or Store Sale pop-up development, and new feature development.',
           ),
           SizedBox(height: 16),
           // 3. Playing Fortune (with two images, no link)
           ProjectItemMultiple(
             title: 'Playing Fortune',
             images: ['assets/images/iskambilfali.png', 'assets/images/iskambilfali2.png'],
+            description: 'Playing Fortune is a unique fortune-telling card game developed with Unity. Players draw cards in pairs, attempting to find matches. When a pair matches, the cards are retained; otherwise, they are discarded. This process continues until the deck is empty.\n\nAfter the deck is cleared, the game uses AI to provide a fortune-telling experience based on the cards you matched. The app supports six languages, making it accessible to users worldwide.\n\nDiscover your fortune through the elegance of playing cards with Playing Fortune!',
           ),
           SizedBox(height: 16),
           // 4. Extreme Stunts 3D
@@ -179,6 +182,7 @@ class ProjectsScreen extends StatelessWidget {
             title: 'Extreme Stunts 3D',
             image: 'assets/images/extremestunts.png',
             link: 'https://play.google.com/store/apps/details?id=com.bariskaplan.extremehillclimbing3d&hl=tr',
+            description: '-Old game was renewed and updated (Physics and some new cars, new features).\n-Created new levels and designed UI.\n-Add Google Mobile Ads in some parts of the game.\n-Add Store and connected to Google Play.',
           ),
           SizedBox(height: 16),
           // 5. Hyper Casual Runner (with two images and a link)
@@ -186,6 +190,7 @@ class ProjectsScreen extends StatelessWidget {
             title: 'Hyper Casual Runner',
             images: ['assets/images/hypercasual.png', 'assets/images/hypercasual2.png'],
             link: 'https://github.com/bilgehandk/Runner-Hyper-Casual-Game',
+            description: 'A hyper-casual runner game developed with Unity. Players navigate through various obstacles and challenges to reach the finish line.',
           ),
         ],
       ),
@@ -197,29 +202,43 @@ class ProjectItem extends StatelessWidget {
   final String title;
   final String image;
   final String link;
+  final String description;
   const ProjectItem({
     super.key,
     required this.title,
     required this.image,
     required this.link,
+    required this.description,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(height: 8),
-        GestureDetector(
-          onTap: () async {
-            if (await canLaunch(link)) {
-              await launch(link);
-            }
-          },
-          child: Image.asset(image),
-        ),
-      ],
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          GestureDetector(
+            onTap: () async {
+              if (await canLaunch(link)) {
+                await launch(link);
+              }
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(image, fit: BoxFit.cover),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+        ],
+      ),
     );
   }
 }
@@ -228,11 +247,13 @@ class ProjectItemMultiple extends StatelessWidget {
   final String title;
   final List<String> images;
   final String? link;
+  final String description;
   const ProjectItemMultiple({
     super.key,
     required this.title,
     required this.images,
     this.link,
+    required this.description,
   });
 
   @override
@@ -242,7 +263,10 @@ class ProjectItemMultiple extends StatelessWidget {
       children: images.map((img) => Expanded(
         child: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Image.asset(img),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(img, fit: BoxFit.cover),
+          ),
         ),
       )).toList(),
     );
@@ -256,13 +280,22 @@ class ProjectItemMultiple extends StatelessWidget {
         child: content,
       );
     }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(height: 8),
-        content,
-      ],
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          content,
+          const SizedBox(height: 8),
+          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+        ],
+      ),
     );
   }
 }
