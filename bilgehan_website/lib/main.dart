@@ -76,7 +76,7 @@ class InfoScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         const Text(
-                          "My professional experience spans internships at companies like Zynga Inc., MobileAction, and Easy Clap Games, where I honed my skills in game development, full-stack development, and software engineering. I’ve worked on various projects, from integrating localization systems into games like 101 Okey Plus, to creating hyper-casual games with innovative mechanics.",
+                          "My professional experience spans internships at companies like Zynga Inc., MobileAction, Barış Kaplan Games and Easy Clap Games, where I honed my skills in game development, full-stack development, and software engineering. I’ve worked on various projects, from integrating localization systems into games like 101 Okey Plus, to creating mobile games with innovative mechanics.",
                           style: TextStyle(color: Colors.white),
                         ),
                         const SizedBox(height: 16),
