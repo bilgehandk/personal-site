@@ -22,7 +22,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (_) => Scaffold(
-          appBar: AppBar(title: const Text('Welcome Bilgehan Demirkaya Portfolio Website')),
+            appBar: AppBar(
+            title: const Text('Welcome Bilgehan Demirkaya Portfolio Website'),
+            titleTextStyle: TextStyle(
+              fontSize: MediaQuery.of(context).size.width > 600 ? 24 : 16,
+            ),
+            ),
           body: GameWidget(game: CardPortfolioGame()),
         ),
         '/info': (_) => const InfoScreen(),
@@ -38,6 +43,7 @@ class InfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width > 600;
     return Scaffold(
       appBar: AppBar(title: const Text('My Info')),
       body: Container(
@@ -50,93 +56,177 @@ class InfoScreen extends StatelessWidget {
         ),
         child: Center(
           child: SingleChildScrollView(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'About Me',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+            child: isDesktop
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'About Me',
+                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "Hello! I'm Bilgehan Demirkaya, a passionate Mobile Game Engineer with a strong foundation in Information Systems and Technologies, currently completing my education at Bilkent University. Over the years, I've developed expertise in Unity, C#, and game monetization platforms such as AdMob and Unity Ads.",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                'My Journey',
+                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "My professional experience spans internships at companies like Zynga Inc., MobileAction, Barış Kaplan Games and Easy Clap Games, where I honed my skills in game development, full-stack development, and software engineering. I’ve worked on various projects, from integrating localization systems into games like 101 Okey Plus, to creating mobile games with innovative mechanics.",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "As a leader, I’ve had the privilege of serving as the Chairman of the Board at Bilkent University Young Entrepreneurs Society, where I led initiatives like hackathons, managed sponsorships, and organized summits that connected startups with the ecosystem.",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                'Skills & Expertise',
+                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "Game Development: Unity, C#, Blender, Plastic SCM\nSoftware Development: React Native, Node.js, SQL, Vue.js, Java Spring\nTeam Management: Project leadership, event coordination, community building\nVersion Control Systems: Git, Plastic SCM",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                'What Drives Me',
+                                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "I thrive at the intersection of creativity and technology. From developing games to designing immersive user experiences, my goal is to push boundaries and deliver impactful solutions that resonate with users.",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              const Text(
+                                "Feel free to explore my GitHub for a closer look at my projects or connect with me on LinkedIn.",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () => launchUrl(Uri.parse('https://github.com/bilgehandk')),
+                                    child: Image.asset('assets/images/github.png', width: 50, height: 50),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  GestureDetector(
+                                    onTap: () => launchUrl(Uri.parse('https://www.linkedin.com/in/bilgehan-demirkaya-32210b193/')),
+                                    child: Image.asset('assets/images/linkedin.png', width: 50, height: 50),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                            ],
+                          ),
                         ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "Hello! I'm Bilgehan Demirkaya, a passionate Mobile Game Engineer with a strong foundation in Information Systems and Technologies, currently completing my education at Bilkent University. Over the years, I've developed expertise in Unity, C#, and game monetization platforms such as AdMob and Unity Ads.",
-                          style: TextStyle(color: Colors.white),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 25.0, bottom: 25.0),
+                          child: Image.asset('assets/images/bilgehan.png', width: 800, height: 800),
                         ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'My Journey',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "My professional experience spans internships at companies like Zynga Inc., MobileAction, Barış Kaplan Games and Easy Clap Games, where I honed my skills in game development, full-stack development, and software engineering. I’ve worked on various projects, from integrating localization systems into games like 101 Okey Plus, to creating mobile games with innovative mechanics.",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "As a leader, I’ve had the privilege of serving as the Chairman of the Board at Bilkent University Young Entrepreneurs Society, where I led initiatives like hackathons, managed sponsorships, and organized summits that connected startups with the ecosystem.",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'Skills & Expertise',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "Game Development: Unity, C#, Blender, Plastic SCM\nSoftware Development: React Native, Node.js, SQL, Vue.js, Java Spring\nTeam Management: Project leadership, event coordination, community building\nVersion Control Systems: Git, Plastic SCM",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'What Drives Me',
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "I thrive at the intersection of creativity and technology. From developing games to designing immersive user experiences, my goal is to push boundaries and deliver impactful solutions that resonate with users.",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          "Feel free to explore my GitHub for a closer look at my projects or connect with me on LinkedIn.",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
+                      ),
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25.0, bottom: 25.0),
+                        child: Image.asset('assets/images/bilgehan.png', width: 300, height: 300),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            GestureDetector(
-                              onTap: () => launchUrl(Uri.parse('https://github.com/bilgehandk')),
-                              child: Image.asset('assets/images/github.png', width: 50, height: 50),
+                            const Text(
+                              'About Me',
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                             ),
-                            const SizedBox(width: 16),
-                            GestureDetector(
-                              onTap: () => launchUrl(Uri.parse('https://www.linkedin.com/in/bilgehan-demirkaya-32210b193/')),
-                              child: Image.asset('assets/images/linkedin.png', width: 50, height: 50),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "Hello! I'm Bilgehan Demirkaya, a passionate Mobile Game Engineer with a strong foundation in Information Systems and Technologies, currently completing my education at Bilkent University. Over the years, I've developed expertise in Unity, C#, and game monetization platforms such as AdMob and Unity Ads.",
+                              style: TextStyle(color: Colors.white),
                             ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'My Journey',
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "My professional experience spans internships at companies like Zynga Inc., MobileAction, Barış Kaplan Games and Easy Clap Games, where I honed my skills in game development, full-stack development, and software engineering. I’ve worked on various projects, from integrating localization systems into games like 101 Okey Plus, to creating mobile games with innovative mechanics.",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "As a leader, I’ve had the privilege of serving as the Chairman of the Board at Bilkent University Young Entrepreneurs Society, where I led initiatives like hackathons, managed sponsorships, and organized summits that connected startups with the ecosystem.",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'Skills & Expertise',
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "Game Development: Unity, C#, Blender, Plastic SCM\nSoftware Development: React Native, Node.js, SQL, Vue.js, Java Spring\nTeam Management: Project leadership, event coordination, community building\nVersion Control Systems: Git, Plastic SCM",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'What Drives Me',
+                              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "I thrive at the intersection of creativity and technology. From developing games to designing immersive user experiences, my goal is to push boundaries and deliver impactful solutions that resonate with users.",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              "Feel free to explore my GitHub for a closer look at my projects or connect with me on LinkedIn.",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () => launchUrl(Uri.parse('https://github.com/bilgehandk')),
+                                  child: Image.asset('assets/images/github.png', width: 50, height: 50),
+                                ),
+                                const SizedBox(width: 16),
+                                GestureDetector(
+                                  onTap: () => launchUrl(Uri.parse('https://www.linkedin.com/in/bilgehan-demirkaya-32210b193/')),
+                                  child: Image.asset('assets/images/linkedin.png', width: 50, height: 50),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
                           ],
                         ),
-                        const SizedBox(height: 8),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 25.0, bottom: 25.0),
-                    child: Image.asset('assets/images/bilgehan.png', width: 800, height: 800), // Adjusted size
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ),
@@ -213,6 +303,7 @@ class ProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width > 600;
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -222,7 +313,7 @@ class ProjectItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
+          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold, fontSize: isDesktop ? 20 : 16)),
           const SizedBox(height: 8),
           GestureDetector(
             onTap: () async {
@@ -234,9 +325,9 @@ class ProjectItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(image, fit: BoxFit.cover),
             ),
-          ),
+          ), 
           const SizedBox(height: 8),
-          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+          Text(description, style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: isDesktop ? 16 : 13)),
         ],
       ),
     );
@@ -258,6 +349,7 @@ class ProjectItemMultiple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width > 600;
     Widget content = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: images.map((img) => Expanded(
@@ -289,11 +381,11 @@ class ProjectItemMultiple extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold)),
+          Text(title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold, fontSize: isDesktop ? 20 : 16)),
           const SizedBox(height: 8),
           content,
           const SizedBox(height: 8),
-          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+          Text(description, style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: isDesktop ? 16 : 12)),
         ],
       ),
     );

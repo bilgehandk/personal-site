@@ -58,10 +58,30 @@ class CardPortfolioGame extends FlameGame with TapDetector {
     final cardWidth = 150;
     final spacing = (screenWidth - (3 * cardWidth)) / 4;
 
+    final isMobile = screenWidth < 600; // Assuming mobile if screen width is less than 600
+
     addAll([
-      CardComponent(position: Vector2(spacing, 200), label: 'My Info', route: '/info', image: 'Spades1.png'),
-      CardComponent(position: Vector2(2 * spacing + cardWidth, 200), label: 'My Portfolio', route: '/projects', image: 'Spades2.png'),
-      CardComponent(position: Vector2(3 * spacing + 2 * cardWidth, 200), label: 'Download CV', route: '/download_cv', image: 'Spades3.png'),
+      CardComponent(
+        position: Vector2(spacing, 200),
+        label: 'My Info',
+        route: '/info',
+        image: 'Spades1.png',
+        fontSize: isMobile ? 12 : 18, // Adjust font size based on screen width
+      ),
+      CardComponent(
+        position: Vector2(2 * spacing + cardWidth, 200),
+        label: 'My Portfolio',
+        route: '/projects',
+        image: 'Spades2.png',
+        fontSize: isMobile ? 12 : 18, // Adjust font size based on screen width
+      ),
+      CardComponent(
+        position: Vector2(3 * spacing + 2 * cardWidth, 200),
+        label: 'Download CV',
+        route: '/download_cv',
+        image: 'Spades3.png',
+        fontSize: isMobile ? 12 : 18, // Adjust font size based on screen width
+      ),
     ]);
   }
 }
@@ -71,16 +91,25 @@ class CardComponent extends SpriteComponent with TapCallbacks, HoverCallbacks {
   final String route;
   final String image;
 
-  CardComponent({required Vector2 position, required this.label, required this.route, required this.image})
+  final double fontSize;
+
+  CardComponent({required Vector2 position, required this.label, required this.route, required this.image, required this.fontSize})
       : super(position: position, size: Vector2(150, 200));
 
   @override
   Future<void> onLoad() async {
-    sprite = await Sprite.load(image);
+    super.onLoad();
+    sprite = await Sprite.load(image); // Ensure sprite is loaded to avoid assertion error
     add(TextComponent(
       text: label,
       position: Vector2(size.x / 2, size.y - 20),
       anchor: Anchor.center,
+      textRenderer: TextPaint(
+        style: TextStyle(
+          fontSize: fontSize,
+          color: Colors.white,
+        ),
+      ),
     ));
   }
 
