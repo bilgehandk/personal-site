@@ -72,6 +72,8 @@ flutter:
     - assets/images/hypercasual2.png
     - assets/images/iskambilfali.png
     - assets/images/iskambilfali2.png
+    - assets/images/medium_icon.png
+    - web/favicon.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

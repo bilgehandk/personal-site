@@ -129,6 +129,11 @@ class InfoScreen extends StatelessWidget {
                                     onTap: () => launchUrl(Uri.parse('https://www.linkedin.com/in/bilgehan-demirkaya-32210b193/')),
                                     child: Image.asset('assets/images/linkedin.png', width: 50, height: 50),
                                   ),
+                                  const SizedBox(width: 16),
+                                  GestureDetector(
+                                    onTap: () => launchUrl(Uri.parse('https://medium.com/@bilgehandk')),
+                                    child: Image.asset('assets/images/medium_icon.png', width: 50, height: 50),
+                                  ),
                                 ],
                               ),
                               const SizedBox(height: 8),
@@ -219,6 +224,11 @@ class InfoScreen extends StatelessWidget {
                                   onTap: () => launchUrl(Uri.parse('https://www.linkedin.com/in/bilgehan-demirkaya-32210b193/')),
                                   child: Image.asset('assets/images/linkedin.png', width: 50, height: 50),
                                 ),
+                                const SizedBox(width: 16),
+                                GestureDetector(
+                                  onTap: () => launchUrl(Uri.parse('https://medium.com/@bilgehandk')),
+                                  child: Image.asset('assets/images/medium_icon.png', width: 50, height: 50),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 8),
@@ -264,6 +274,7 @@ class ProjectsScreen extends StatelessWidget {
           ProjectItemMultiple(
             title: 'Playing Fortune',
             images: ['assets/images/iskambilfali.png', 'assets/images/iskambilfali2.png'],
+            link: 'https://github.com/bilgehandk/Playing-Fortune',
             description: 'Playing Fortune is a unique fortune-telling card game developed with Unity. Players draw cards in pairs, attempting to find matches. When a pair matches, the cards are retained; otherwise, they are discarded. This process continues until the deck is empty.\n\nAfter the deck is cleared, the game uses AI to provide a fortune-telling experience based on the cards you matched. The app supports six languages, making it accessible to users worldwide.\n\nDiscover your fortune through the elegance of playing cards with Playing Fortune!',
           ),
           SizedBox(height: 16),
