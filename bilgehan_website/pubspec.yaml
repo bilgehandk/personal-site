@@ -39,6 +39,9 @@ dependencies:
   path_provider: ^2.1.5
   syncfusion_flutter_pdfviewer: ^28.2.7
   animated_background: ^2.0.0  # ensure this line is present
+  pdf: ^3.11.3
+  url_launcher_web: ^2.4.0
+  web: ^1.1.1
 
 dev_dependencies:
   flutter_test:

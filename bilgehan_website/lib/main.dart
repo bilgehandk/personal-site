@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'card_portfolio_game.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:html' as html;
+import 'card_portfolio_game.dart';
 import 'package:flutter/foundation.dart';
+
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -435,10 +438,21 @@ class DownloadCVScreen extends StatelessWidget {
     );
   }
   
-  void _downloadCV() {
-    // Use web-specific download approach
-    html.AnchorElement(href: '../assets/Bilgehan_Demirkaya-CV.pdf')
-      ..download = 'Bilgehan_Demirkaya-CV.pdf'
-      ..click();
+  Future<void> _downloadCV() async {
+    // Load the PDF file from your assets as bytes
+    // PDF dosyasını assetlerden yükle
+    final bytes = await rootBundle.load('assets/Bilgehan_Demirkaya-CV.pdf');
+    final buffer = bytes.buffer.asUint8List();
+
+    // Tarayıcıda indirme başlat
+    final blob = html.Blob([buffer]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    final anchor = html.AnchorElement(href: url)
+      ..target = 'blank'
+      ..download = 'BilgehanDemirkaya.pdf'; // İndirilecek dosya adı
+    anchor.click();
+
+    // Belleği temizle
+    html.Url.revokeObjectUrl(url);
   }
 }
