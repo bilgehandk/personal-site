@@ -57,7 +57,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/CV.pdf
+    - assets/Bilgehan_Demirkaya-CV.pdf
     - assets/images/Cardback.png
     - assets/images/Spades1.png
     - assets/images/Spades2.png

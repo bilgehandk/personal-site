@@ -410,7 +410,7 @@ class DownloadCVScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Download CV'),
+        title: const Text('Download Resume'),
         actions: [
           IconButton(
             icon: const Icon(Icons.download),
@@ -421,13 +421,13 @@ class DownloadCVScreen extends StatelessWidget {
       body: Column(
           children: [
             Expanded(
-              child: kIsWeb ? SfPdfViewer.asset('assets/CV.pdf') : Container(),
+              child: kIsWeb ? SfPdfViewer.asset('assets/Bilgehan_Demirkaya-CV.pdf') : Container(),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 onPressed: () => _downloadCV(),
-                child: const Text('Download CV'),
+                child: const Text('Download Resume'),
               ),
             ),
           ],
@@ -437,8 +437,8 @@ class DownloadCVScreen extends StatelessWidget {
   
   void _downloadCV() {
     // Use web-specific download approach
-    html.AnchorElement(href: 'assets/CV.pdf')
-      ..download = 'Bilgehan_Demirkaya_CV.pdf'
+    html.AnchorElement(href: '../assets/Bilgehan_Demirkaya-CV.pdf')
+      ..download = 'Bilgehan_Demirkaya-CV.pdf'
       ..click();
   }
 }
